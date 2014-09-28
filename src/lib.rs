@@ -1,5 +1,11 @@
 
 pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
+    if source.len() == 0 {
+        return Vec::new();
+    }
+    if key.len() == 0 {
+        return source.to_vec();
+    }
     let key_iter = InfiniteByteIterator::new(key);
     source.iter().zip(key_iter).map(|(&a, b)| a ^ b).collect()
 }
@@ -41,16 +47,30 @@ mod test {
     use super::xor;
 
     #[test]
-    fn test_xor_len() {
-        let source = [0u8, 1, 2, 3];
-        let key = [34u8, 52];
+    fn test_len() {
+        let source = [0, 1, 2, 3];
+        let key = [34, 52];
         assert!(xor(source, key).len() == source.len());
     }
 
     #[test]
-    fn test_xor_result() {
-        let source = [0u8, 1, 2, 3];
-        let key = [34u8, 52];
+    fn test_result() {
+        let source = [0, 1, 2, 3];
+        let key = [34, 52];
         assert!(xor(source, key) == vec![34, 53, 32, 55]);
+    }
+
+    #[test]
+    fn test_with_empty_key() {
+        let source = [0, 1, 2, 3];
+        let key = [];
+        assert!(xor(source, key) == vec![0, 1, 2, 3]);
+    }
+
+    #[test]
+    fn test_with_empty_source() {
+        let source = [];
+        let key = [45, 32, 56];
+        assert!(xor(source, key) == vec![]);
     }
 }
