@@ -1,7 +1,7 @@
 
 pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
-    let iter = InfiniteByteIterator::new(key);
-    source.iter().zip(iter).map(|(&a, b)| a ^ b).collect()
+    let key_iter = InfiniteByteIterator::new(key);
+    source.iter().zip(key_iter).map(|(&a, b)| a ^ b).collect()
 }
 
 struct InfiniteByteIterator {
