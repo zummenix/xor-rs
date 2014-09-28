@@ -34,3 +34,23 @@ fn next_index(current: uint, count: uint) -> uint {
         0
     }
 }
+
+#[cfg(test)]
+mod test {
+
+    use super::xor;
+
+    #[test]
+    fn test_xor_len() {
+        let source = [0u8, 1, 2, 3];
+        let key = [34u8, 52];
+        assert!(xor(source, key).len() == source.len());
+    }
+
+    #[test]
+    fn test_xor_result() {
+        let source = [0u8, 1, 2, 3];
+        let key = [34u8, 52];
+        assert!(xor(source, key) == vec![34, 53, 32, 55]);
+    }
+}
