@@ -47,13 +47,6 @@ mod test {
     use super::xor;
 
     #[test]
-    fn test_len() {
-        let source = [0, 1, 2, 3];
-        let key = [34, 52];
-        assert!(xor(source, key).len() == source.len());
-    }
-
-    #[test]
     fn test_result() {
         let source = [0, 1, 2, 3];
         let key = [34, 52];
