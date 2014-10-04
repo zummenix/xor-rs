@@ -1,5 +1,5 @@
 [package]
 
-name = "xor-rs"
+name = "xor_rs"
 version = "0.0.1"
 authors = ["Aleksey Kuznetsov <zummenix@gmail.com>"]
