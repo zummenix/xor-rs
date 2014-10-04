@@ -48,20 +48,20 @@ mod test {
     fn test_result() {
         let source = [0, 1, 2, 3];
         let key = [34, 52];
-        assert!(xor(source, key) == vec![34, 53, 32, 55]);
+        assert!(xor(source, key).as_slice() == [34, 53, 32, 55]);
     }
 
     #[test]
     fn test_with_empty_key() {
         let source = [0, 1, 2, 3];
         let key = [];
-        assert!(xor(source, key) == vec![0, 1, 2, 3]);
+        assert!(xor(source, key).as_slice() == [0, 1, 2, 3]);
     }
 
     #[test]
     fn test_with_empty_source() {
         let source = [];
         let key = [45, 32, 56];
-        assert!(xor(source, key) == vec![]);
+        assert!(xor(source, key).as_slice() == []);
     }
 }
