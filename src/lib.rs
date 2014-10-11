@@ -34,13 +34,8 @@ impl Iterator<u8> for InfiniteByteIterator {
     }
 }
 
-fn next_index(current: uint, count: uint) -> uint {
-    let index = current + 1;
-    if index < count {
-        index
-    } else {
-        0
-    }
+fn next_index(index: uint, count: uint) -> uint {
+    if index + 1 < count { index + 1 } else { 0 }
 }
 
 describe! test_xor {
