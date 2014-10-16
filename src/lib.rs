@@ -12,22 +12,22 @@ pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
     source.iter().zip(key_iter).map(|(&a, b)| a ^ b).collect()
 }
 
-struct InfiniteByteIterator {
-    bytes: Vec<u8>,
+struct InfiniteByteIterator<'a> {
+    bytes: &'a [u8],
     index: uint
 }
 
-impl InfiniteByteIterator {
-    pub fn new(bytes: &[u8]) -> InfiniteByteIterator {
+impl<'a> InfiniteByteIterator<'a> {
+    pub fn new(bytes: &'a [u8]) -> InfiniteByteIterator<'a> {
         InfiniteByteIterator {
-            bytes: bytes.to_vec(),
+            bytes: bytes,
             index: 0
         }
     }
 }
 
-impl Iterator<u8> for InfiniteByteIterator {
-    fn next(&mut self) -> Option<u8> {
+impl<'a> Iterator<u8> for InfiniteByteIterator<'a> {
+    fn next<'a>(&'a mut self) -> Option<u8> {
         let byte = self.bytes[self.index];
         self.index = next_index(self.index, self.bytes.len());
         Some(byte)
