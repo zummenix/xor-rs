@@ -1,11 +1,10 @@
 xor-rs
 ======
 
-A repeating-key XOR function written in Rust.
-It might be useful to play with [the matasano crypto challenges](http://cryptopals.com).
+A repeating-key XOR function written in Rust.<br />
+This function might be useful to play with [the matasano crypto challenges](http://cryptopals.com).
 
-Usage
------
+###Example
 
 This example prints `Hello, world!`
 
