@@ -1,5 +1,5 @@
-xor-rs
-======
+xor-rs [![Build Status](https://travis-ci.org/zummenix/xor-rs.svg?branch=master)](https://travis-ci.org/zummenix/xor-rs)
+=====
 
 A repeating-key XOR function written in Rust.<br />
 This function might be useful to play with [the matasano crypto challenges](http://cryptopals.com).
