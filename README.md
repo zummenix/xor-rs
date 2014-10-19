@@ -8,11 +8,10 @@ This function might be useful to play with [the matasano crypto challenges](http
 
 This example prints `Hello, world!`
 
-In your `Cargo.toml` 
+In your `Cargo.toml`
 ```toml
 [dependencies.xor]
 git = "https://github.com/zummenix/xor-rs/"
-
 ```
 
 In your `main.rs`
