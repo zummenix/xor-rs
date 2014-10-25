@@ -27,10 +27,14 @@ impl<'a> InfiniteByteIterator<'a> {
 }
 
 impl<'a> Iterator<u8> for InfiniteByteIterator<'a> {
-    fn next<'a>(&'a mut self) -> Option<u8> {
-        let byte = self.bytes[self.index];
-        self.index = next_index(self.index, self.bytes.len());
-        Some(byte)
+    fn next(&mut self) -> Option<u8> {
+        if self.bytes.len() == 1 {
+            Some(self.bytes[0])
+        } else {
+            let byte = self.bytes[self.index];
+            self.index = next_index(self.index, self.bytes.len());
+            Some(byte)
+        }
     }
 }
 
@@ -43,6 +47,12 @@ describe! test_xor {
         let source = [0, 1, 2, 3];
         let key = [34, 52];
         assert!(xor(source, key).as_slice() == [34, 53, 32, 55]);
+    }
+
+    it "should return right result with one byte xor" {
+        let source = [0, 1, 2, 3];
+        let key = [47];
+        assert!(xor(source, key).as_slice() == [47, 46, 45, 44]);
     }
 
     it "should return source if key is empty" {
