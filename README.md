@@ -1,20 +1,21 @@
-xor-rs [![Build Status](https://travis-ci.org/zummenix/xor-rs.svg?branch=master)](https://travis-ci.org/zummenix/xor-rs)
-=====
+xor-rs
+======
+[![Build Status](https://travis-ci.org/zummenix/xor-rs.svg?branch=master)](https://travis-ci.org/zummenix/xor-rs)
 
 A repeating-key XOR function written in Rust.<br />
 This function might be useful to play with [the matasano crypto challenges](http://cryptopals.com).
 
-###Example
+###Usage
 
-This example prints `Hello, world!`
-
-In your `Cargo.toml`
+In your `Cargo.toml` need to add:
 ```toml
 [dependencies.xor]
 git = "https://github.com/zummenix/xor-rs/"
 ```
 
-In your `main.rs`
+###Example
+
+This example prints `Hello, world!`
 ```rust
 extern crate xor;
 extern crate collections;
