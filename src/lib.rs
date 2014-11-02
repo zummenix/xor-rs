@@ -7,7 +7,6 @@ pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
     if source.len() == 0 || key.len() == 0 {
         return source.to_vec();
     }
-
     let key_iter = InfiniteByteIterator::new(key);
     source.iter().zip(key_iter).map(|(&a, b)| a ^ b).collect()
 }

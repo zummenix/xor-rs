@@ -4,10 +4,5 @@ name = "xor_rs"
 version = "0.0.1"
 authors = ["Aleksey Kuznetsov <zummenix@gmail.com>"]
 
-[[bin]]
-name = "example"
-path = "src/bin/example.rs"
-test = false
-
 [dependencies.stainless]
 git = "https://github.com/reem/stainless"
