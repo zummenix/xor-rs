@@ -1,5 +1,5 @@
 
-extern crate "xor_rs" as xor;
+extern crate xor;
 extern crate collections;
 
 fn main() {

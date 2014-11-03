@@ -1,7 +1,5 @@
 
 #![feature(phase)]
-#[phase(plugin, link)]
-extern crate stainless;
 
 pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
     if source.len() == 0 || key.len() == 0 {
@@ -41,28 +39,34 @@ fn next_index(index: uint, count: uint) -> uint {
     if index + 1 < count { index + 1 } else { 0 }
 }
 
-describe! test_xor {
-    it "should return right result" {
-        let source = [0, 1, 2, 3];
-        let key = [34, 52];
-        assert!(xor(source, key).as_slice() == [34, 53, 32, 55]);
-    }
+#[cfg(test)]
+mod test {
+    #[phase(plugin)] extern crate stainless;
+    pub use super::xor;
 
-    it "should return right result with one byte xor" {
-        let source = [0, 1, 2, 3];
-        let key = [47];
-        assert!(xor(source, key).as_slice() == [47, 46, 45, 44]);
-    }
+    describe! xor {
+        it "should return right result" {
+            let source = [0, 1, 2, 3];
+            let key = [34, 52];
+            assert!(xor(source, key).as_slice() == [34, 53, 32, 55]);
+        }
 
-    it "should return source if key is empty" {
-        let source = [0, 1, 2, 3];
-        let key = [];
-        assert!(xor(source, key).as_slice() == [0, 1, 2, 3]);
-    }
+        it "should return right result with one byte xor" {
+            let source = [0, 1, 2, 3];
+            let key = [47];
+            assert!(xor(source, key).as_slice() == [47, 46, 45, 44]);
+        }
 
-    it "should return empty result if source is empty" {
-        let source = [];
-        let key = [45, 32, 56];
-        assert!(xor(source, key).as_slice() == []);
+        it "should return source if key is empty" {
+            let source = [0, 1, 2, 3];
+            let key = [];
+            assert!(xor(source, key).as_slice() == [0, 1, 2, 3]);
+        }
+
+        it "should return empty result if source is empty" {
+            let source = [];
+            let key = [45, 32, 56];
+            assert!(xor(source, key).as_slice() == []);
+        }
     }
 }
