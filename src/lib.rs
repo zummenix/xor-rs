@@ -2,9 +2,18 @@
 #![feature(phase)]
 
 pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
-    if source.len() == 0 || key.len() == 0 {
-        return source.to_vec();
+    match key.len() {
+        0 => source.to_vec(),
+        1 => xor_byte(source, key[0]),
+        _ => xor_sequence(source, key),
     }
+}
+
+fn xor_byte(source: &[u8], byte: u8) -> Vec<u8> {
+    source.iter().map(|&a| a ^ byte).collect()
+}
+
+fn xor_sequence(source: &[u8], key: &[u8]) -> Vec<u8> {
     let key_iter = InfiniteByteIterator::new(key);
     source.iter().zip(key_iter).map(|(&a, b)| a ^ b).collect()
 }
@@ -25,13 +34,9 @@ impl<'a> InfiniteByteIterator<'a> {
 
 impl<'a> Iterator<u8> for InfiniteByteIterator<'a> {
     fn next(&mut self) -> Option<u8> {
-        if self.bytes.len() == 1 {
-            Some(self.bytes[0])
-        } else {
-            let byte = self.bytes[self.index];
-            self.index = next_index(self.index, self.bytes.len());
-            Some(byte)
-        }
+        let byte = self.bytes[self.index];
+        self.index = next_index(self.index, self.bytes.len());
+        Some(byte)
     }
 }
 
