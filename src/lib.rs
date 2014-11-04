@@ -5,17 +5,15 @@ pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
     match key.len() {
         0 => source.to_vec(),
         1 => xor_byte(source, key[0]),
-        _ => xor_sequence(source, key),
+        _ => {
+            let key_iter = InfiniteByteIterator::new(key);
+            source.iter().zip(key_iter).map(|(&a, b)| a ^ b).collect()
+        },
     }
 }
 
-fn xor_byte(source: &[u8], byte: u8) -> Vec<u8> {
+pub fn xor_byte(source: &[u8], byte: u8) -> Vec<u8> {
     source.iter().map(|&a| a ^ byte).collect()
-}
-
-fn xor_sequence(source: &[u8], key: &[u8]) -> Vec<u8> {
-    let key_iter = InfiniteByteIterator::new(key);
-    source.iter().zip(key_iter).map(|(&a, b)| a ^ b).collect()
 }
 
 struct InfiniteByteIterator<'a> {
@@ -47,7 +45,11 @@ fn next_index(index: uint, count: uint) -> uint {
 #[cfg(test)]
 mod test {
     #[phase(plugin)] extern crate stainless;
-    pub use super::xor;
+
+    pub use super::{
+        xor,
+        xor_byte,
+    };
 
     describe! xor {
         it "should return right result" {
@@ -72,6 +74,13 @@ mod test {
             let source = [];
             let key = [45, 32, 56];
             assert!(xor(source, key).as_slice() == []);
+        }
+    }
+
+    describe! xor_byte {
+        it "should return right result" {
+            let source = [0, 1, 2, 3];
+            assert!(xor_byte(source, 23).as_slice() == [23, 22, 21, 20]);
         }
     }
 }
