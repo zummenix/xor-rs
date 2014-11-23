@@ -53,34 +53,34 @@ mod test {
 
     describe! xor {
         it "should return right result" {
-            let source = [0, 1, 2, 3];
-            let key = [34, 52];
-            assert!(xor(source, key).as_slice() == [34, 53, 32, 55]);
+            let source = &[0, 1, 2, 3];
+            let key = &[34, 52];
+            assert!(xor(source, key).as_slice() == &[34, 53, 32, 55]);
         }
 
         it "should return right result with one byte xor" {
-            let source = [0, 1, 2, 3];
-            let key = [47];
-            assert!(xor(source, key).as_slice() == [47, 46, 45, 44]);
+            let source = &[0, 1, 2, 3];
+            let key = &[47];
+            assert!(xor(source, key).as_slice() == &[47, 46, 45, 44]);
         }
 
         it "should return source if key is empty" {
-            let source = [0, 1, 2, 3];
-            let key = [];
-            assert!(xor(source, key).as_slice() == [0, 1, 2, 3]);
+            let source = &[0, 1, 2, 3];
+            let key = &[];
+            assert!(xor(source, key).as_slice() == &[0, 1, 2, 3]);
         }
 
         it "should return empty result if source is empty" {
-            let source = [];
-            let key = [45, 32, 56];
-            assert!(xor(source, key).as_slice() == []);
+            let source = &[];
+            let key = &[45, 32, 56];
+            assert!(xor(source, key).as_slice() == &[]);
         }
     }
 
     describe! xor_with_byte {
         it "should return right result" {
-            let source = [0, 1, 2, 3];
-            assert!(xor_with_byte(source, 23).as_slice() == [23, 22, 21, 20]);
+            let source = &[0, 1, 2, 3];
+            assert!(xor_with_byte(source, 23).as_slice() == &[23, 22, 21, 20]);
         }
     }
 }
