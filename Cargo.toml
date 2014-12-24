@@ -4,5 +4,5 @@ name = "xor"
 version = "0.1.1"
 authors = ["Aleksey Kuznetsov <zummenix@gmail.com>"]
 
-[dependencies.stainless]
-git = "https://github.com/reem/stainless"
+[dev-dependencies]
+stainless = "*"
