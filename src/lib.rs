@@ -1,5 +1,5 @@
 
-#![feature(phase)]
+#![feature(plugin)]
 
 pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
     match key.len() {
@@ -30,7 +30,8 @@ impl<'a> InfiniteByteIterator<'a> {
     }
 }
 
-impl<'a> Iterator<u8> for InfiniteByteIterator<'a> {
+impl<'a> Iterator for InfiniteByteIterator<'a> {
+    type Item = u8;
     fn next(&mut self) -> Option<u8> {
         let byte = self.bytes[self.index];
         self.index = next_index(self.index, self.bytes.len());
@@ -44,7 +45,7 @@ fn next_index(index: uint, count: uint) -> uint {
 
 #[cfg(test)]
 mod test {
-    #[phase(plugin)] extern crate stainless;
+    #[plugin] extern crate stainless;
 
     pub use super::{
         xor,
