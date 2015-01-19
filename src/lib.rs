@@ -47,10 +47,7 @@ fn next_index(index: usize, count: usize) -> usize {
 mod test {
     #[plugin] extern crate stainless;
 
-    pub use super::{
-        xor,
-        xor_with_byte,
-    };
+    pub use super::*;
 
     describe! xor {
         it "should return valid result" {
