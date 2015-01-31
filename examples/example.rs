@@ -1,3 +1,4 @@
+#![feature(collections, core)]
 
 extern crate xor;
 extern crate collections;

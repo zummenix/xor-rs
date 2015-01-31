@@ -17,6 +17,8 @@ git = "https://github.com/zummenix/xor-rs/"
 
 This example prints `Hello, world!`
 ```rust
+#![feature(collections, core)]
+
 extern crate xor;
 extern crate collections;
 
