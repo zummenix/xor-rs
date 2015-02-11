@@ -4,5 +4,5 @@ name = "xor"
 version = "0.1.1"
 authors = ["Aleksey Kuznetsov <zummenix@gmail.com>"]
 
-[dev-dependencies]
+[dependencies]
 stainless = "*"

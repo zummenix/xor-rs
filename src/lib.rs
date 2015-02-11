@@ -1,5 +1,6 @@
 
 #![feature(plugin)]
+#![plugin(stainless)]
 
 pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
     match key.len() {
@@ -45,7 +46,7 @@ fn next_index(index: usize, count: usize) -> usize {
 
 #[cfg(test)]
 mod test {
-    #[plugin] extern crate stainless;
+    extern crate stainless;
 
     pub use super::*;
 
