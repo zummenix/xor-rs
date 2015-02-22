@@ -46,8 +46,6 @@ fn next_index(index: usize, count: usize) -> usize {
 
 #[cfg(test)]
 mod test {
-    extern crate stainless;
-
     pub use super::*;
 
     describe! xor {
