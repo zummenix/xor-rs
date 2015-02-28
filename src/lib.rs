@@ -65,7 +65,7 @@ mod test {
             assert!(xor(source, key) == [34, 53, 32, 55]);
         }
 
-        it "should return valid result with one byte xor" {
+        it "should return valid result with one byte" {
             let source = &[0, 1, 2, 3];
             let key = &[47];
             assert!(xor(source, key) == [47, 46, 45, 44]);
