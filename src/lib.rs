@@ -1,7 +1,14 @@
-
 #![feature(plugin)]
 #![plugin(stainless)]
 
+//! A repeating-key XOR functions.
+//!
+//! This functions might be useful to play with
+//! [the matasano crypto challenges](http://cryptopals.com).
+
+/// Returns result of a XOR operation applied to a `source` byte sequence.
+///
+/// `key` will be an infinitely repeating byte sequence.
 pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
     match key.len() {
         0 => source.to_vec(),
@@ -13,6 +20,9 @@ pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
     }
 }
 
+/// Returns result of a XOR operation applied to a `source` byte sequence.
+///
+/// `byte` will be an infinitely repeating byte sequence.
 pub fn xor_with_byte(source: &[u8], byte: u8) -> Vec<u8> {
     source.iter().map(|&a| a ^ byte).collect()
 }
