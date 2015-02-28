@@ -1,9 +1,11 @@
 xor-rs
 ======
-[![Build Status](https://travis-ci.org/zummenix/xor-rs.svg?branch=master)](https://travis-ci.org/zummenix/xor-rs)
+[![Build Status](https://travis-ci.org/zummenix/xor-rs.svg?branch=master)]
+(https://travis-ci.org/zummenix/xor-rs)
 
-A repeating-key XOR function written in Rust.<br />
-This function might be useful to play with [the matasano crypto challenges](http://cryptopals.com).
+A repeating-key XOR functions written in Rust.<br />
+This functions might be useful to play with
+[the matasano crypto challenges](http://cryptopals.com).
 
 ###Usage
 
