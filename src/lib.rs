@@ -1,5 +1,5 @@
-#![feature(plugin)]
-#![plugin(stainless)]
+#![cfg_attr(test, feature(plugin))]
+#![cfg_attr(test, plugin(stainless))]
 
 //! A repeating-key XOR functions.
 //!
