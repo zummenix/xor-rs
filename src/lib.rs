@@ -74,7 +74,7 @@ mod test {
         it "should return source if key is empty" {
             let source = &[0, 1, 2, 3];
             let key = &[];
-            assert!(xor(source, key) == [0, 1, 2, 3]);
+            assert!(xor(source, key) == source);
         }
 
         it "should return empty result if source is empty" {
