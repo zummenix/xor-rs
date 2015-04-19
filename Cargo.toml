@@ -1,8 +1,4 @@
 [package]
-
 name = "xor"
 version = "0.1.2"
 authors = ["Aleksey Kuznetsov <zummenix@gmail.com>"]
-
-[dev-dependencies]
-stainless = "*"

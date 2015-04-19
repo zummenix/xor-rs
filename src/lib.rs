@@ -1,5 +1,3 @@
-#![cfg_attr(test, feature(plugin))]
-#![cfg_attr(test, plugin(stainless))]
 
 //! A repeating-key XOR functions.
 //!
@@ -58,36 +56,37 @@ fn next_index(index: usize, count: usize) -> usize {
 mod test {
     pub use super::*;
 
-    describe! xor {
-        it "should return valid result" {
-            let source = &[0, 1, 2, 3];
-            let key = &[34, 52];
-            assert!(xor(source, key) == [34, 53, 32, 55]);
-        }
-
-        it "should return valid result with one byte" {
-            let source = &[0, 1, 2, 3];
-            let key = &[47];
-            assert!(xor(source, key) == [47, 46, 45, 44]);
-        }
-
-        it "should return source if key is empty" {
-            let source = &[0, 1, 2, 3];
-            let key = &[];
-            assert!(xor(source, key) == source);
-        }
-
-        it "should return empty result if source is empty" {
-            let source = &[];
-            let key = &[45, 32, 56];
-            assert!(xor(source, key) == []);
-        }
+    #[test]
+    fn xor_valid_result() {
+        let source = &[0, 1, 2, 3];
+        let key = &[34, 52];
+        assert!(xor(source, key) == [34, 53, 32, 55]);
     }
 
-    describe! xor_with_byte {
-        it "should return valid result" {
-            let source = &[0, 1, 2, 3];
-            assert!(xor_with_byte(source, 23) == [23, 22, 21, 20]);
-        }
+    #[test]
+    fn xor_valid_result_with_one_byte() {
+        let source = &[0, 1, 2, 3];
+        let key = &[47];
+        assert!(xor(source, key) == [47, 46, 45, 44]);
+    }
+
+    #[test]
+    fn xor_empty_key() {
+        let source = &[0, 1, 2, 3];
+        let key = &[];
+        assert!(xor(source, key) == source);
+    }
+
+    #[test]
+    fn xor_empty_source() {
+        let source = &[];
+        let key = &[45, 32, 56];
+        assert!(xor(source, key) == []);
+    }
+
+    #[test]
+    fn xor_with_byte_valid_result() {
+        let source = &[0, 1, 2, 3];
+        assert!(xor_with_byte(source, 23) == [23, 22, 21, 20]);
     }
 }
