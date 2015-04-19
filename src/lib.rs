@@ -4,6 +4,10 @@
 //! This functions might be useful to play with
 //! [the matasano crypto challenges](http://cryptopals.com).
 
+#[cfg(test)]
+#[macro_use(expect)]
+extern crate expectest;
+
 /// Returns result of a XOR operation applied to a `source` byte sequence.
 ///
 /// `key` will be an infinitely repeating byte sequence.
@@ -54,39 +58,40 @@ fn next_index(index: usize, count: usize) -> usize {
 
 #[cfg(test)]
 mod test {
-    pub use super::*;
+    use super::*;
+    use expectest::prelude::*;
 
     #[test]
     fn xor_valid_result() {
         let source = &[0, 1, 2, 3];
         let key = &[34, 52];
-        assert!(xor(source, key) == [34, 53, 32, 55]);
+        expect!(xor(source, key)).to(be_equal_to([34, 53, 32, 55]));
     }
 
     #[test]
     fn xor_valid_result_with_one_byte() {
         let source = &[0, 1, 2, 3];
         let key = &[47];
-        assert!(xor(source, key) == [47, 46, 45, 44]);
+        expect!(xor(source, key)).to(be_equal_to([47, 46, 45, 44]));
     }
 
     #[test]
     fn xor_empty_key() {
         let source = &[0, 1, 2, 3];
         let key = &[];
-        assert!(xor(source, key) == source);
+        expect!(xor(source, key)).to(be_equal_to(source));
     }
 
     #[test]
     fn xor_empty_source() {
         let source = &[];
         let key = &[45, 32, 56];
-        assert!(xor(source, key) == []);
+        expect!(xor(source, key)).to(be_equal_to([]));
     }
 
     #[test]
     fn xor_with_byte_valid_result() {
         let source = &[0, 1, 2, 3];
-        assert!(xor_with_byte(source, 23) == [23, 22, 21, 20]);
+        expect!(xor_with_byte(source, 23)).to(be_equal_to([23, 22, 21, 20]));
     }
 }
