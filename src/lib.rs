@@ -64,34 +64,35 @@ mod test {
     #[test]
     fn xor_valid_result() {
         let source = &[0, 1, 2, 3];
-        let key = &[34, 52];
-        expect!(xor(source, key)).to(be_equal_to([34, 53, 32, 55]));
+        let result = xor(source, &[34, 52]);
+        expect!(result).to(be_equal_to([34, 53, 32, 55]));
     }
 
     #[test]
     fn xor_valid_result_with_one_byte() {
         let source = &[0, 1, 2, 3];
-        let key = &[47];
-        expect!(xor(source, key)).to(be_equal_to([47, 46, 45, 44]));
+        let result = xor(source, &[47]);
+        expect!(result).to(be_equal_to([47, 46, 45, 44]));
     }
 
     #[test]
     fn xor_empty_key() {
         let source = &[0, 1, 2, 3];
-        let key = &[];
-        expect!(xor(source, key)).to(be_equal_to(source));
+        let result = xor(source, &[]);
+        expect!(result).to(be_equal_to(source));
     }
 
     #[test]
     fn xor_empty_source() {
         let source = &[];
-        let key = &[45, 32, 56];
-        expect!(xor(source, key)).to(be_equal_to([]));
+        let result = xor(source, &[45, 32, 56]);
+        expect!(result).to(be_empty());
     }
 
     #[test]
     fn xor_with_byte_valid_result() {
         let source = &[0, 1, 2, 3];
-        expect!(xor_with_byte(source, 23)).to(be_equal_to([23, 22, 21, 20]));
+        let result = xor_with_byte(source, 23);
+        expect!(result).to(be_equal_to([23, 22, 21, 20]));
     }
 }
