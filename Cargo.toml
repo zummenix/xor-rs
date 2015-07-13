@@ -4,4 +4,4 @@ version = "0.1.2"
 authors = ["Aleksey Kuznetsov <zummenix@gmail.com>"]
 
 [dev-dependencies]
-expectest = "*"
+expectest = "~0.2.1"
