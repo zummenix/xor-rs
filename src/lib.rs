@@ -13,7 +13,7 @@ extern crate expectest;
 /// `key` will be an infinitely repeating byte sequence.
 pub fn xor(source: &[u8], key: &[u8]) -> Vec<u8> {
     match key.len() {
-        0 => source.to_vec(),
+        0 => source.into(),
         1 => xor_with_byte(source, key[0]),
         _ => {
             let key_iter = InfiniteByteIterator::new(key);
@@ -57,7 +57,7 @@ fn next_index(index: usize, count: usize) -> usize {
 }
 
 #[cfg(test)]
-mod test {
+mod tests {
     use super::*;
     use expectest::prelude::*;
 
