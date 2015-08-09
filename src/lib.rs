@@ -31,15 +31,12 @@ pub fn xor_with_byte(source: &[u8], byte: u8) -> Vec<u8> {
 
 struct InfiniteByteIterator<'a> {
     bytes: &'a [u8],
-    index: usize
+    index: usize,
 }
 
 impl<'a> InfiniteByteIterator<'a> {
     pub fn new(bytes: &'a [u8]) -> InfiniteByteIterator<'a> {
-        InfiniteByteIterator {
-            bytes: bytes,
-            index: 0
-        }
+        InfiniteByteIterator { bytes: bytes, index: 0 }
     }
 }
 
@@ -53,7 +50,11 @@ impl<'a> Iterator for InfiniteByteIterator<'a> {
 }
 
 fn next_index(index: usize, count: usize) -> usize {
-    if index + 1 < count { index + 1 } else { 0 }
+    if index + 1 < count {
+        index + 1
+    } else {
+        0
+    }
 }
 
 #[cfg(test)]
