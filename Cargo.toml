@@ -4,4 +4,4 @@ version = "0.1.4"
 authors = ["Aleksey Kuznetsov <zummenix@gmail.com>"]
 
 [dev-dependencies]
-expectest = "~0.5.1"
+expectest = { version = "0.6.0", features = ["nightly"] }
